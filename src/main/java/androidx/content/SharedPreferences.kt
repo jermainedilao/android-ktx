@@ -28,8 +28,5 @@ import android.content.SharedPreferences
  * }
  * ```
  */
-inline fun SharedPreferences.edit(action: SharedPreferences.Editor.() -> Unit) {
-    val editor = edit()
-    action(editor)
-    editor.apply()
-}
+inline fun SharedPreferences.edit(action: SharedPreferences.Editor.() -> SharedPreferences.Editor) =
+    edit().action().apply()
